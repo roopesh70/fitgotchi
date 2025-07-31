@@ -2,16 +2,14 @@
 # FitGotchi – Take Care of Yourself by Taking Care of a Virtual Pet 🐾
 
 
-
-
 FitGotchi is a fun, gamified habit tracker where your daily habits directly impact the health and happiness of a 3D virtual pet.
 Drink water, sleep well, exercise – your pet thrives. Skip habits – your pet gets sad.
 Make habit-building fun, emotional, and rewarding!
 
 🎮 Core Features
-Adopt Your FitPet
+* Adopt Your FitPet
 
-* Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
+** Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
 
 Pet reacts with animations based on your real-life habits
 
