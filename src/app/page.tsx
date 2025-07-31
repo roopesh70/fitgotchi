@@ -12,12 +12,18 @@ import {
   CookingPot,
   Smartphone,
   Star,
+  Brush,
+  Gamepad2,
+  Trophy,
+  Users
 } from "lucide-react";
 
 import Header from "@/components/Header";
 import PetDisplay from "@/components/PetDisplay";
 import HabitTracker from "@/components/HabitTracker";
 import EncouragementCard from "@/components/EncouragementCard";
+import PetCustomizationModal from "@/components/PetCustomizationModal";
+import LeaderboardSheet from "@/components/LeaderboardSheet";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -80,12 +86,16 @@ const ClientOnly = ({ children }: { children: React.ReactNode }) => {
 
 export default function Home() {
   const [petType, setPetType] = useState<PetType>("dog");
+  const [petName, setPetName] = useState("Buddy");
   const [petMood, setPetMood] = useState<PetMood>("idle");
   const [habits, setHabits] = useState<Habits>(initialHabits);
   const [streak, setStreak] = useState(0);
   const [coins, setCoins] = useState(100);
   const [encouragement, setEncouragement] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+
+  const [isCustomizationOpen, setCustomizationOpen] = useState(false);
+  const [isLeaderboardOpen, setLeaderboardOpen] = useState(false);
 
   const getEncouragement = async (
     habit: Habit,
@@ -163,6 +173,7 @@ export default function Home() {
   };
 
   return (
+    <>
     <div className="flex flex-col min-h-screen bg-background text-foreground font-body">
       <Header streak={streak} coins={coins} />
       <ClientOnly>
@@ -170,6 +181,7 @@ export default function Home() {
           <div className="md:w-1/2 lg:w-3/5 flex flex-col gap-8">
             <PetDisplay
               petType={petType}
+              petName={petName}
               mood={petMood}
               onPetChange={setPetType}
             />
@@ -189,15 +201,28 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="grid grid-cols-2 gap-4">
-                <Button disabled variant="outline" className="h-12">Pet Customization</Button>
-                <Button disabled variant="outline" className="h-12">Mini-Games</Button>
-                <Button disabled variant="outline" className="h-12">Leaderboards</Button>
-                <Button disabled variant="outline" className="h-12">Friend Challenges</Button>
+                <Button onClick={() => setCustomizationOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Brush className="mr-2"/>Pet Customization</Button>
+                <Button disabled variant="outline" className="h-12"><Gamepad2 className="mr-2"/>Mini-Games</Button>
+                <Button onClick={() => setLeaderboardOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Trophy className="mr-2"/>Leaderboards</Button>
+                <Button disabled variant="outline" className="h-12"><Users className="mr-2"/>Friend Challenges</Button>
               </CardContent>
             </Card>
           </div>
         </main>
       </ClientOnly>
     </div>
+    <PetCustomizationModal
+      isOpen={isCustomizationOpen}
+      onClose={() => setCustomizationOpen(false)}
+      petName={petName}
+      onPetNameChange={setPetName}
+      coins={coins}
+      onPurchase={(cost) => setCoins(coins - cost)}
+    />
+    <LeaderboardSheet
+      isOpen={isLeaderboardOpen}
+      onClose={() => setLeaderboardOpen(false)}
+    />
+    </>
   );
 }

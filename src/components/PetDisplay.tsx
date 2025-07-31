@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { PetType, PetMood } from "@/lib/types";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -14,6 +14,7 @@ import { Label } from "./ui/label";
 
 type PetDisplayProps = {
   petType: PetType;
+  petName: string;
   mood: PetMood;
   onPetChange: (petType: PetType) => void;
 };
@@ -39,11 +40,14 @@ const petImages: Record<PetType, Record<PetMood, { src: string; hint: string }>>
   },
 };
 
-export default function PetDisplay({ petType, mood, onPetChange }: PetDisplayProps) {
+export default function PetDisplay({ petType, petName, mood, onPetChange }: PetDisplayProps) {
   const petImage = petImages[petType][mood];
 
   return (
     <Card className="shadow-lg rounded-xl overflow-hidden relative">
+       <CardHeader className="absolute top-0 left-4 z-10 bg-background/80 p-2 rounded-lg">
+        <CardTitle className="text-xl font-bold text-primary">{petName}</CardTitle>
+      </CardHeader>
       <CardContent className="p-0">
         <div className="absolute top-4 right-4 z-10 w-40 bg-background/80 p-2 rounded-lg">
           <Label htmlFor="pet-select" className="text-xs mb-1 block">Choose Pet</Label>
