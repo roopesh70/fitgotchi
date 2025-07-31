@@ -9,7 +9,7 @@ Make habit-building fun, emotional, and rewarding!
 🎮 Core Features
 * Adopt Your FitPet
 
-** Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
+* * Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
 
 Pet reacts with animations based on your real-life habits
 
