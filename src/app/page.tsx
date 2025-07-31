@@ -24,6 +24,7 @@ import HabitTracker from "@/components/HabitTracker";
 import EncouragementCard from "@/components/EncouragementCard";
 import PetCustomizationModal from "@/components/PetCustomizationModal";
 import LeaderboardSheet from "@/components/LeaderboardSheet";
+import MiniGameModal from "@/components/MiniGameModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -96,6 +97,7 @@ export default function Home() {
 
   const [isCustomizationOpen, setCustomizationOpen] = useState(false);
   const [isLeaderboardOpen, setLeaderboardOpen] = useState(false);
+  const [isGameOpen, setGameOpen] = useState(false);
 
   const getEncouragement = async (
     habit: Habit,
@@ -172,6 +174,12 @@ export default function Home() {
     }
   };
 
+  const handleGameWin = () => {
+    setCoins((prevCoins) => prevCoins + 50);
+    setPetMood("happy");
+    setGameOpen(false);
+  }
+
   return (
     <>
     <div className="flex flex-col min-h-screen bg-background text-foreground font-body">
@@ -202,7 +210,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="grid grid-cols-2 gap-4">
                 <Button onClick={() => setCustomizationOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Brush className="mr-2"/>Pet Customization</Button>
-                <Button disabled variant="outline" className="h-12"><Gamepad2 className="mr-2"/>Mini-Games</Button>
+                <Button onClick={() => setGameOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Gamepad2 className="mr-2"/>Mini-Games</Button>
                 <Button onClick={() => setLeaderboardOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Trophy className="mr-2"/>Leaderboards</Button>
                 <Button disabled variant="outline" className="h-12"><Users className="mr-2"/>Friend Challenges</Button>
               </CardContent>
@@ -222,6 +230,11 @@ export default function Home() {
     <LeaderboardSheet
       isOpen={isLeaderboardOpen}
       onClose={() => setLeaderboardOpen(false)}
+    />
+    <MiniGameModal
+        isOpen={isGameOpen}
+        onClose={() => setGameOpen(false)}
+        onGameWin={handleGameWin}
     />
     </>
   );
