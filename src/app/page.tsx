@@ -28,6 +28,7 @@ import MiniGameModal from "@/components/MiniGameModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ConnectWalletModal from "@/components/ConnectWalletModal";
+import FriendChallengeModal from "@/components/FriendChallengeModal";
 
 
 const initialHabits: Habits = {
@@ -101,6 +102,7 @@ export default function Home() {
   const [isLeaderboardOpen, setLeaderboardOpen] = useState(false);
   const [isGameOpen, setGameOpen] = useState(false);
   const [isWalletModalOpen, setWalletModalOpen] = useState(false);
+  const [isChallengeModalOpen, setChallengeModalOpen] = useState(false);
 
   const getEncouragement = async (
     habit: Habit,
@@ -215,7 +217,7 @@ export default function Home() {
                 <Button onClick={() => setCustomizationOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Brush className="mr-2"/>Pet Customization</Button>
                 <Button onClick={() => setGameOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Gamepad2 className="mr-2"/>Mini-Games</Button>
                 <Button onClick={() => setLeaderboardOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Trophy className="mr-2"/>Leaderboards</Button>
-                <Button disabled variant="outline" className="h-12"><Users className="mr-2"/>Friend Challenges</Button>
+                <Button onClick={() => setChallengeModalOpen(true)} variant="outline" className="h-12 hover:bg-primary/10 hover:shadow-md transition-all duration-300"><Users className="mr-2"/>Friend Challenges</Button>
               </CardContent>
             </Card>
           </div>
@@ -242,6 +244,10 @@ export default function Home() {
      <ConnectWalletModal
       isOpen={isWalletModalOpen}
       onClose={() => setWalletModalOpen(false)}
+    />
+    <FriendChallengeModal
+        isOpen={isChallengeModalOpen}
+        onClose={() => setChallengeModalOpen(false)}
     />
     </>
   );
