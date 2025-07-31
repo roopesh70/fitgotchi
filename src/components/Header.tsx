@@ -9,11 +9,20 @@ import type { User } from "firebase/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AnimatePresence, motion } from "framer-motion";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { ethers } from "ethers";
+import { cn } from "@/lib/utils";
 
 type HeaderProps = {
   streak: number;
   coins: number;
+  onConnectWallet: () => void;
 };
+
+type WalletState = {
+  address: string;
+  balance: string;
+} | null;
+
 
 const ClientOnly = ({ children }: { children: React.ReactNode }) => {
   const [hasMounted, setHasMounted] = useState(false);
@@ -27,9 +36,11 @@ const ClientOnly = ({ children }: { children: React.ReactNode }) => {
 };
 
 
-export default function Header({ streak, coins }: HeaderProps) {
+export default function Header({ streak, coins, onConnectWallet }: HeaderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [wallet, setWallet] = useState<WalletState>(null);
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -58,6 +69,30 @@ export default function Header({ streak, coins }: HeaderProps) {
     }
   };
 
+  const connectWallet = async () => {
+     if (typeof window.ethereum !== 'undefined') {
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        await provider.send("eth_requestAccounts", []);
+        const signer = await provider.getSigner();
+        const address = await signer.getAddress();
+        const balance = await provider.getBalance(address);
+        setWallet({
+          address: address,
+          balance: ethers.formatEther(balance),
+        });
+      } catch (error) {
+        console.error("Wallet connection failed", error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if(wallet) {
+      onConnectWallet();
+    }
+  }, [wallet, onConnectWallet])
+
   return (
     <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-4">
@@ -73,11 +108,40 @@ export default function Header({ streak, coins }: HeaderProps) {
             <CircleDollarSign className="text-green-500" />
             <span>{coins}</span>
           </div>
+           {wallet && (
+             <div className="hidden md:flex items-center gap-2 text-xs bg-secondary px-2 py-1 rounded-md">
+                <span className="font-mono truncate w-24" title={wallet.address}>{wallet.address}</span>
+                <span className="font-semibold">{parseFloat(wallet.balance).toFixed(4)} ETH</span>
+             </div>
+           )}
 
-          <Button variant="outline" size="sm" className="hidden md:flex">
-            <Wallet className="mr-2 h-4 w-4" />
-            Connect Wallet
-          </Button>
+          <AnimatePresence mode="wait">
+           {wallet ? (
+             <motion.div
+                key="wallet-connected"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="hidden md:flex"
+             >
+                <Button variant="outline" size="sm" className="bg-green-500/20 border-green-500 text-green-700 hover:bg-green-500/30 shadow-[0_0_15px_rgba(74,222,128,0.5)]">
+                    <Wallet className="mr-2 h-4 w-4" />
+                    Wallet Connected
+                </Button>
+            </motion.div>
+           ) : (
+             <motion.div
+                key="connect-wallet"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="hidden md:flex"
+             >
+                <Button variant="outline" size="sm" onClick={onConnectWallet}>
+                    <Wallet className="mr-2 h-4 w-4" />
+                    Connect Wallet
+                </Button>
+            </motion.div>
+           )}
+          </AnimatePresence>
           
           <ClientOnly>
             <div className="w-[180px] h-9 flex items-center justify-end">

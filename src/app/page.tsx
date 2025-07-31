@@ -27,6 +27,8 @@ import LeaderboardSheet from "@/components/LeaderboardSheet";
 import MiniGameModal from "@/components/MiniGameModal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import ConnectWalletModal from "@/components/ConnectWalletModal";
+
 
 const initialHabits: Habits = {
   water: {
@@ -98,6 +100,7 @@ export default function Home() {
   const [isCustomizationOpen, setCustomizationOpen] = useState(false);
   const [isLeaderboardOpen, setLeaderboardOpen] = useState(false);
   const [isGameOpen, setGameOpen] = useState(false);
+  const [isWalletModalOpen, setWalletModalOpen] = useState(false);
 
   const getEncouragement = async (
     habit: Habit,
@@ -125,7 +128,7 @@ export default function Home() {
     if (completionRatio >= 0.8) {
       setPetMood("happy");
     } else if (completionRatio >= 0.4) {
-      setPetMood("energetic");
+      setPetMood("idle");
     } else if (completionRatio > 0) {
       setPetMood("idle");
     } else {
@@ -183,7 +186,7 @@ export default function Home() {
   return (
     <>
     <div className="flex flex-col min-h-screen bg-background text-foreground font-body">
-      <Header streak={streak} coins={coins} />
+      <Header streak={streak} coins={coins} onConnectWallet={() => setWalletModalOpen(true)} />
       <ClientOnly>
         <main className="flex-grow container mx-auto p-4 flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2 lg:w-3/5 flex flex-col gap-8">
@@ -235,6 +238,10 @@ export default function Home() {
         isOpen={isGameOpen}
         onClose={() => setGameOpen(false)}
         onGameWin={handleGameWin}
+    />
+     <ConnectWalletModal
+      isOpen={isWalletModalOpen}
+      onClose={() => setWalletModalOpen(false)}
     />
     </>
   );
