@@ -1,0 +1,63 @@
+[debug] [2025-07-31T18:04:53.073Z] ----------------------------------------------------------------------
+[debug] [2025-07-31T18:04:53.075Z] Command:       /nix/store/ws50yvm6vzlzf7jzz6n7xh4szddrack1-nodejs-20.19.1/bin/node /nix/store/gv0i9ndcpzjpfi2yr06402kzy90q51ki-firebase-tools-14.10.1/lib/node_modules/firebase-tools/lib/bin/firebase.js init hosting
+[debug] [2025-07-31T18:04:53.076Z] CLI Version:   14.10.1
+[debug] [2025-07-31T18:04:53.076Z] Platform:      linux
+[debug] [2025-07-31T18:04:53.076Z] Node Version:  v20.19.1
+[debug] [2025-07-31T18:04:53.076Z] Time:          Thu Jul 31 2025 18:04:53 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-07-31T18:04:53.076Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-31T18:04:53.081Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-31T18:04:53.082Z] > authorizing via signed-in user (roopeshkrishnanme@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/user/studio
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-07-31T18:04:53.086Z] Using project from CLI flag: fitgotchi-2o
+[debug] [2025-07-31T18:04:53.087Z] No OAuth tokens found
+[debug] [2025-07-31T18:04:53.087Z] No OAuth tokens found
+[debug] [2025-07-31T18:04:53.087Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-31T18:04:53.087Z] > authorizing via signed-in user (roopeshkrishnanme@gmail.com)
+[debug] [2025-07-31T18:04:53.089Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o [none]
+[debug] [2025-07-31T18:04:53.392Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o 200
+[debug] [2025-07-31T18:04:53.392Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o {"projectId":"fitgotchi-2o","projectNumber":"646287788482","displayName":"fitgotchi 2O","name":"projects/fitgotchi-2o","resources":{"hostingSite":"fitgotchi-2o","realtimeDatabaseInstance":"fitgotchi-2o-default-rtdb"},"state":"ACTIVE","etag":"1_9f093234-657b-455d-899c-87aa9410c8d0"}
+[info] i  Using project fitgotchi-2o (fitgotchi 2O) 
+[info] 
+=== Hosting Setup
+[debug] [2025-07-31T18:04:53.405Z] No OAuth tokens found
+[debug] [2025-07-31T18:04:53.405Z] No OAuth tokens found
+[debug] [2025-07-31T18:04:53.406Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-31T18:04:53.406Z] > authorizing via signed-in user (roopeshkrishnanme@gmail.com)
+[debug] [2025-07-31T18:04:53.406Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o [none]
+[debug] [2025-07-31T18:04:53.627Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o 200
+[debug] [2025-07-31T18:04:53.627Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fitgotchi-2o {"projectId":"fitgotchi-2o","projectNumber":"646287788482","displayName":"fitgotchi 2O","name":"projects/fitgotchi-2o","resources":{"hostingSite":"fitgotchi-2o","realtimeDatabaseInstance":"fitgotchi-2o-default-rtdb"},"state":"ACTIVE","etag":"1_9f093234-657b-455d-899c-87aa9410c8d0"}
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2025-07-31T18:04:58.549Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2025-07-31T18:04:58.570Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2025-07-31T18:04:58.570Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"12.0.0","browserURL":"https://www.gstatic.com/firebasejs/12.0.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/12.0.0/firebase.tgz"},"live":{"version":"12.0","browserURL":"https://www.gstatic.com/firebasejs/live/12.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/12.0/firebase.tgz"},"components":{"ai":"https://www.gstatic.com/firebasejs/12.0.0/firebase-ai.js","analytics":"https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/12.0.0/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth/cordova.js","auth/web-extension":"https://www.gstatic.com/firebasejs/12.0.0/firebase-auth/web-extension.js","functions":"https://www.gstatic.com/firebasejs/12.0.0/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore/lite.js","installations":"https://www.gstatic.com/firebasejs/12.0.0/firebase-installations.js","storage":"https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/12.0.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/12.0.0/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/12.0.0/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/12.0.0/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js","data-connect":"https://www.gstatic.com/firebasejs/12.0.0/firebase-data-connect.js","firestore.memory":"https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.memory.js"}}
+[info] i  public/index.html is unchanged 
+[info] 
+[info] i  Detected a .git folder at /home/user/studio 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=898618747&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
