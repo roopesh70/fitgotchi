@@ -9,39 +9,39 @@ Make habit-building fun, emotional, and rewarding!
 🎮 Core Features
 * Adopt Your FitPet
 
-* * Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
+  * Choose a cute 3D virtual pet (dog, cat, dragon, etc.)
 
-Pet reacts with animations based on your real-life habits
+  * Pet reacts with animations based on your real-life habits
 
-Gamified Habit Tracking
+* Gamified Habit Tracking
 
-Log water, meals, sleep, steps, and screen time
+  * Log water, meals, sleep, steps, and screen time
 
-Maintain streaks to earn coins & daily gifts
+  * Maintain streaks to earn coins & daily gifts
 
-Pet Interaction
+* Pet Interaction
 
-Feed, hydrate, and play with your pet
+  * Feed, hydrate, and play with your pet
 
-Environment changes based on your consistency
+  * Environment changes based on your consistency
 
-Mini-Games & Rewards
+* Mini-Games & Rewards
 
-Unlock games like fetch, memory, and dance-off for streak milestones
+  * Unlock games like fetch, memory, and dance-off for streak milestones
 
-Earn coins to customize pet outfits and room
+  * Earn coins to customize pet outfits and room
 
-Leaderboards & Friend Challenges
+* Leaderboards & Friend Challenges
 
-Compete for weekly streaks
+  * Compete for weekly streaks
 
-Send challenges and share pets with friends
+  * Send challenges and share pets with friends
 
-Web3 Wallet Integration
+* Web3 Wallet Integration
 
-Connect Ethereum wallet (MetaMask)
+  * Connect Ethereum wallet (MetaMask)
 
-Store rare pet skins as NFTs and earn token rewards
+  * Store rare pet skins as NFTs and earn token rewards
 
 
 
