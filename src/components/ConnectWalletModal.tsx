@@ -109,6 +109,12 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
             className="sm:max-w-md"
             onInteractOutside={(e) => e.preventDefault()}
           >
+            <DialogHeader className="sr-only">
+              <DialogTitle>Connect Wallet</DialogTitle>
+              <DialogDescription>
+                Connect your Ethereum wallet to proceed.
+              </DialogDescription>
+            </DialogHeader>
             <AnimatePresence mode="wait">
                  <motion.div
                     key={status}
