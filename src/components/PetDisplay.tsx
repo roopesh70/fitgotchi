@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -12,13 +13,6 @@ import {
 } from "@/components/ui/select";
 import { Label } from "./ui/label";
 
-type PetDisplayProps = {
-  petType: PetType;
-  petName: string;
-  mood: PetMood;
-  onPetChange: (petType: PetType) => void;
-};
-
 const petImages: Record<PetType, Record<PetMood, { src: string; hint: string }>> = {
   dog: {
     idle: { src: "/home/user/studio/src/components/images/IMG_20250802_111452.jpg", hint: "dog sitting" },
@@ -27,16 +21,16 @@ const petImages: Record<PetType, Record<PetMood, { src: string; hint: string }>>
     energetic: { src: "https://placehold.co/600x600", hint: "dog running" },
   },
   cat: {
-    idle: { src: "https://placehold.co/600x400", hint: "cat sitting" },
-    happy: { src: "https://placehold.co/600x400", hint: "happy cat" },
-    sad: { src: "https://placehold.co/600x400", hint: "sad cat" },
-    energetic: { src: "https://placehold.co/600x400", hint: "cat playing" },
+    idle: { src: "https://placehold.co/600x600", hint: "cat sitting" },
+    happy: { src: "https://placehold.co/600x600", hint: "happy cat" },
+    sad: { src: "https://placehold.co/600x600", hint: "sad cat" },
+    energetic: { src: "https://placehold.co/600x600", hint: "cat playing" },
   },
   dragon: {
-    idle: { src: "https://placehold.co/600x400", hint: "dragon resting" },
-    happy: { src: "https://placehold.co/600x400", hint: "happy dragon" },
-    sad: { src: "https://placehold.co/600x400", hint: "sad dragon" },
-    energetic: { src: "https://placehold.co/600x400", hint: "dragon flying" },
+    idle: { src: "https://placehold.co/600x600", hint: "dragon resting" },
+    happy: { src: "https://placehold.co/600x600", hint: "happy dragon" },
+    sad: { src: "https://placehold.co/600x600", hint: "sad dragon" },
+    energetic: { src: "https://placehold.co/600x600", hint: "dragon flying" },
   },
 };
 
@@ -63,13 +57,13 @@ export default function PetDisplay({ petType, petName, mood, onPetChange }: PetD
           </Select>
         </div>
         
-        <div className="aspect-video w-full flex items-center justify-center bg-secondary/50">
+        <div className="aspect-square w-full flex items-center justify-center bg-secondary/50">
            <Image
             key={petType + mood}
             src={petImage.src}
             alt={`${mood} ${petType}`}
             width={600}
-            height={400}
+            height={600}
             data-ai-hint={petImage.hint}
             className="object-cover w-full h-full animate-in fade-in-50 duration-500"
             priority
