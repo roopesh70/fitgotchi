@@ -1,3 +1,4 @@
+
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -26,7 +27,6 @@
     "@radix-ui/react-menubar": "^1.1.6",
     "@radix-ui/react-popover": "^1.1.6",
     "@radix-ui/react-progress": "^1.1.2",
-    "firebase": "^10.12.2",
     "@radix-ui/react-radio-group": "^1.2.3",
     "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-select": "^2.1.6",
@@ -43,6 +43,7 @@
     "dotenv": "^16.5.0",
     "embla-carousel-react": "^8.6.0",
     "ethers": "^6.13.1",
+    "firebase": "^10.12.2",
     "framer-motion": "^11.3.19",
     "genkit": "^1.14.1",
     "lucide-react": "^0.475.0",

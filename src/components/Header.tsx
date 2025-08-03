@@ -18,7 +18,7 @@ type HeaderProps = {
   onConnectWallet: () => void;
 };
 
-type WalletState = {
+export type WalletState = {
   address: string;
   balance: string;
 } | null;
@@ -49,6 +49,31 @@ export default function Header({ streak, coins, onConnectWallet }: HeaderProps) 
     });
     return () => unsubscribe();
   }, []);
+  
+  // Check for existing connection on mount
+  useEffect(() => {
+    const checkIfWalletIsConnected = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const accounts = await provider.listAccounts();
+          if (accounts.length > 0) {
+            const signer = await provider.getSigner();
+            const address = await signer.getAddress();
+            const balance = await provider.getBalance(address);
+            setWallet({
+              address: address,
+              balance: ethers.formatEther(balance),
+            });
+          }
+        } catch (error) {
+          console.error("Failed to check for wallet connection", error);
+        }
+      }
+    };
+    checkIfWalletIsConnected();
+  }, []);
+
 
   const handleSignIn = async () => {
     setIsLoading(true);
@@ -69,29 +94,6 @@ export default function Header({ streak, coins, onConnectWallet }: HeaderProps) 
     }
   };
 
-  const connectWallet = async () => {
-     if (typeof window.ethereum !== 'undefined') {
-      try {
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        await provider.send("eth_requestAccounts", []);
-        const signer = await provider.getSigner();
-        const address = await signer.getAddress();
-        const balance = await provider.getBalance(address);
-        setWallet({
-          address: address,
-          balance: ethers.formatEther(balance),
-        });
-      } catch (error) {
-        console.error("Wallet connection failed", error);
-      }
-    }
-  }
-
-  useEffect(() => {
-    if(wallet) {
-      onConnectWallet();
-    }
-  }, [wallet, onConnectWallet])
 
   return (
     <header className="bg-card/80 backdrop-blur-sm border-b sticky top-0 z-50">
@@ -109,10 +111,13 @@ export default function Header({ streak, coins, onConnectWallet }: HeaderProps) 
             <span>{coins}</span>
           </div>
            {wallet && (
-             <div className="hidden md:flex items-center gap-2 text-xs bg-secondary px-2 py-1 rounded-md">
-                <span className="font-mono truncate w-24" title={wallet.address}>{wallet.address}</span>
+             <motion.div 
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: 'auto' }}
+                className="hidden md:flex items-center gap-2 text-xs bg-secondary px-2 py-1 rounded-md overflow-hidden">
+                <span className="font-mono" title={wallet.address}>{wallet.address.substring(0,6)}...{wallet.address.substring(wallet.address.length - 4)}</span>
                 <span className="font-semibold">{parseFloat(wallet.balance).toFixed(4)} ETH</span>
-             </div>
+             </motion.div>
            )}
 
           <AnimatePresence mode="wait">

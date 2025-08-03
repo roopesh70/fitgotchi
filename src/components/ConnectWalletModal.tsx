@@ -107,12 +107,12 @@ export default function ConnectWalletModal({ isOpen, onClose }: ConnectWalletMod
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             className="sm:max-w-md"
-            onInteractOutside={(e) => e.preventDefault()}
+            onInteractOutside={(e) => status !== 'connecting' && e.preventDefault()}
           >
-            <DialogHeader className="sr-only">
+            <DialogHeader>
               <DialogTitle>Connect Wallet</DialogTitle>
               <DialogDescription>
-                Connect your Ethereum wallet to proceed.
+                Connect your Ethereum wallet to manage your Web3 assets and rewards.
               </DialogDescription>
             </DialogHeader>
             <AnimatePresence mode="wait">
