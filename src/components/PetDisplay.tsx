@@ -13,6 +13,13 @@ import {
 } from "@/components/ui/select";
 import { Label } from "./ui/label";
 
+type PetDisplayProps = {
+  petType: PetType;
+  petName: string;
+  mood: PetMood;
+  onPetChange: (petType: PetType) => void;
+};
+
 const petImages: Record<PetType, Record<PetMood, { src: string; hint: string }>> = {
   dog: {
     idle: { src: "/home/user/studio/src/components/images/IMG_20250802_111452.jpg", hint: "dog sitting" },
