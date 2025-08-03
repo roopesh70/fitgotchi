@@ -21,10 +21,10 @@ type PetDisplayProps = {
 
 const petImages: Record<PetType, Record<PetMood, { src: string; hint: string }>> = {
   dog: {
-    idle: { src: "https://placehold.co/600x400", hint: "dog sitting" },
-    happy: { src: "https://placehold.co/600x400", hint: "happy dog" },
-    sad: { src: "https://placehold.co/600x400", hint: "sad dog" },
-    energetic: { src: "https://placehold.co/600x400", hint: "dog running" },
+    idle: { src: "/home/user/studio/src/components/images/IMG_20250802_111452.jpg", hint: "dog sitting" },
+    happy: { src: "https://placehold.co/600x600", hint: "happy dog" },
+    sad: { src: "https://placehold.co/600x600", hint: "sad dog" },
+    energetic: { src: "https://placehold.co/600x600", hint: "dog running" },
   },
   cat: {
     idle: { src: "https://placehold.co/600x400", hint: "cat sitting" },
